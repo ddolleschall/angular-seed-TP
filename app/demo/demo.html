@@ -1,0 +1,20 @@
+<div>
+
+<form name ="myForm">
+    <div class ="form-group">
+<input type="text" ng-model="person.yourName" placeholder="Nom">
+<input type="text" ng-model="person.yourPrenom"placeholder="Prénom">
+<input type="number" ng-model="person.yourAge" placeholder="Age">
+<input type="submit" value = "envoyer"></div></form>
+<br><br>
+
+<span>{{result}}</span><br>
+
+<annee value="person.yourAge">{{person.yourAge}}</annee><br>
+
+<pre>{{person | json}}</pre><br>
+
+<span>{{ person.yourAge | yearToMonth }} mois ! </span>
+
+<br><br><br>
+</div>
