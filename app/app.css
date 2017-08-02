@@ -23,3 +23,30 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+input:disabled {
+  background-color: red;
+  color: white;
+}
+
+input.ng-invalid.ng-touched{
+  background-color: yellow;
+}
+
+form.ng-submitted input.ng-invalid{
+  background-color:red;
+}
+
+input.ng-touched {
+  background-color:white;
+}
+input.ng-valid{
+   background-color:lightgreen;
+}
+
+form.ng-valid input[type="submit"]{
+  color:green;
+}
+form.ng-invalid input[type="submit"]{
+  color:red;
+}

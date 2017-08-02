@@ -1,20 +1,70 @@
-<div>
+<div class="container">
 
 <form name ="myForm">
-    <div class ="form-group">
-<input type="text" ng-model="person.yourName" placeholder="Nom">
-<input type="text" ng-model="person.yourPrenom"placeholder="Prénom">
-<input type="number" ng-model="person.yourAge" placeholder="Age">
-<input type="submit" value = "envoyer"></div></form>
+<input type="text" ng-model="person.yourName" placeholder="Nom" required>
+<input type="text" ng-model="person.yourPrenom"placeholder="Prénom" required>
+<input type="number" ng-model="person.yourAge" placeholder="Age" required>
+<input type="submit" value = "Envoyer"  ng-disabled="myForm.$invalid" ng-show="myForm.$valid">
+</form>
 <br><br>
 
-<span>{{result}}</span><br>
+<span>{{result}}</span><br><br>
 
-<annee value="person.yourAge">{{person.yourAge}}</annee><br>
+<annee value="person.yourAge"></annee><br>
 
-<pre>{{person | json}}</pre><br>
+<pre>{{person | json}}</pre>
 
 <span>{{ person.yourAge | yearToMonth }} mois ! </span>
+<br><br>
+<select ng-options="book.text for book in books track by book.id" 
+ng-model="selectedBook">
+    <option> </option> <!--avoir l'option vide -->
+</select> {{selectedBook}}
+<br><br>
+
+
+<div class="container">
+<form name ="demoForm"  novalidate ng-submit="submitNew()">
+<label>Titre: </label><input name="titre" ng-model="titre" required minlength="3">
+<label>Auteur: </label><input name="auteur" ng-model="auteur" required>
+<input type="submit" value = "Envoyer">
+ 
+</form>
+<ul>
+<ng-messages for="demoForm.titre.$error">
+    <ng-message when="required">
+        <li>Titre requis</li>
+    </ng-message>
+    <ng-message when="minlength">
+        <li>Titre trop court (plus de 3 caractères requis)</li>
+    </ng-message>
+</ng-messages>
+<ng-messages for="demoForm.auteur.$error">
+    <ng-message when="required">
+        <li>Auteur requis</li>
+    </ng-message>
+</ng-messages>
+</ul>
+
+<br>
+<pre>{{demoForm | json}}</pre>
+
+
+<br><br>
+<table class="table-striped" style="padding:10px">
+    <tr>
+        <th class="text-center">Id</th>
+        <th class="text-center">Titre</th>
+        <th class="text-center">Body</th>
+    </tr>
+    <tr ng-repeat ="user in donnees">
+        <td>{{user.id}}</td>
+        <td>{{user.title}}</td>
+        <td>{{user.body}}</td>
+    </tr>
+
+
+</table>
 
 <br><br><br>
 </div>
